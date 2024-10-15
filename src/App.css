@@ -1,0 +1,122 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+.title-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-family: serif, sans-serif;
+  font-style: italic;
+  font-size: 80px;
+  text-align: center;
+}
+
+input:focus {
+  outline: none;
+}
+
+.sign-container {
+  width: 100%;
+}
+
+.signature {
+  text-align: center;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px
+}
+
+.signature p {
+  margin: 0px;
+  width: 100%;
+}
+
+.event-date-etc {
+  width: 300px;
+}
+
+.event-date-etc-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.location-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.location {
+  width: 500px
+}
+
+.general-location-container {
+  margin: 20px 0px;
+}
+
+.logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 200px
+}
+
+input {
+  border: none;
+  border-bottom: 2px solid;
+  background-color: #ffffff;
+  color: #000000;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 24px;
+}
+
+.participants {
+  text-align: center;
+}
+
+.convent-participant {
+  text-align: center;
+}
+
+.button-container {
+  width: 100%;
+  top: 0;
+  position: fixed;
+  right: 0;
+}
+
+button:hover {
+  background-color: #FEF6D2;
+  color: #1F783A;
+}
+
+button {
+  width: 100%;
+  max-width: 1000px;
+  padding: 15px;
+  font-size: 18px;
+  background-color: #1F783A;
+  border: none;
+  transition: all ease-in-out;
+  transition-duration: .3s;
+}
