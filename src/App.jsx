@@ -17,7 +17,8 @@ function App() {
   },[name])
 
   const onChange = (data) => {
-    setInputName(data.target.value)
+    const upperCaseName = data.target.value.toUpperCase()
+    setInputName(upperCaseName)
     console.log(data.target.value)
   }
 
@@ -194,7 +195,7 @@ function App() {
                 `}
               </style> : ""
             }
-            <input placeholder="Enter you complete name here" value={inputName}  class="participant-name" type="text"  onChange={(e) => onChange(e)}/>
+            <input placeholder="Enter your complete name here" value={inputName}  class="participant-name" type="text"  onChange={(e) => onChange(e)}/>
             <span>as</span>
           </div>
           <div className="convent-participant">
