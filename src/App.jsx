@@ -194,7 +194,7 @@ function App() {
                 `}
               </style> : ""
             }
-            <input placeholder="Enter you complete name here" value={inputName.toUpperCase()}  class="participant-name" type="text"  onChange={(e) => onChange(e)}/>
+            <input placeholder="Enter you complete name here" value={inputName}  class="participant-name" type="text"  onChange={(e) => onChange(e)}/>
             <span>as</span>
           </div>
           <div className="convent-participant">
