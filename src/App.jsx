@@ -10,6 +10,7 @@ function App() {
 
   useEffect(() => {
     getData()
+    console.log("localStorgae", localStorage.getItem("userHasHistory") == "true")
   }, [])
 
   const getData = async () => {
@@ -26,14 +27,9 @@ function App() {
     }
   }
 
-    // sessionStorage.setItem("referrer", referrerToken)
-    // || localStorage.getItem('userHasHistory')
-
-    console.log("document.referrer", document.referrer)
-
   return (
     <>
-      {document.referrer == "https://www.philsan.org/" ? 
+      {document.referrer == "https://www.philsan.org/" || localStorage.getItem("userHasHistory") !== "true" ? 
         <Certificate 
           data={participants}
         /> :
