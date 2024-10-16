@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      {document.referrer == "https://www.philsan.org/" || localStorage.getItem("userHasHistory") !== "true" ? 
+      {document.referrer == "https://www.philsan.org/" ? 
         <Certificate 
           data={participants}
         /> :
