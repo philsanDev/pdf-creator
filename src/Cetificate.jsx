@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from 'react'
+import { useParams, useLocation } from 'react-router-dom'
 import html2pdf from 'html2pdf.js'
 import amiSign from "./assets/ami.png"
 import niqSign from "./assets/niq.png"
@@ -11,23 +12,30 @@ const Certificate = () => {
     useEffect(() => {
         setName(inputName)
       },[name])
-    
-      const onChange = (data) => {
+      
+    const urlParams = new URLSearchParams(window.location.search);
+    const referrerToken = urlParams.get('ref');
+
+    // sessionStorage.setItem("referrer", referrerToken)
+
+    console.log("document.referrer", document.referrer)
+
+    // console.log("referrer", referrerToken)
+
+    const onChange = (data) => {
         const upperCaseName = data.target.value.toUpperCase()
         setInputName(upperCaseName)
         console.log(data.target.value)
-      }
-    
-      const onClick = () => {
-        if(inputName) {
-          setIsinput(true)
-          html2pdf(document.querySelector("#capture"))
-        } else {
-          setIsinput(false)
-        }
-      }
+    }
 
-      localStorage.setItem("name", "person A")
+    const onClick = () => {
+        if(inputName) {
+            setIsinput(true)
+            html2pdf(document.querySelector("#capture"))
+        } else {
+            setIsinput(false)
+        }
+    }
     
       const mainContainerstyle = {
         color: "#000000",
