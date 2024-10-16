@@ -27,15 +27,17 @@ function App() {
     }
   }
 
-  console.log("localStorgae", localStorage.getItem("userHasHistory"))
+  console.log("localStorage", localStorage.getItem("userHasHistory"))
 
   return (
     <>
-      {document.referrer == "https://www.philsan.org/" ? 
-        <Certificate 
-          data={participants}
-        /> :
-        <Login />
+      {document.referrer == "https://www.philsan.org/" ? (
+        localStorage.getItem("userHasHistory") ? 
+          <Login /> :
+          <Certificate 
+            data={participants}
+          /> 
+        ) : <Login />
       }
     </>
   )
