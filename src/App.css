@@ -124,3 +124,7 @@ button {
   transition: all ease-in-out;
   transition-duration: .3s;
 }
+
+#feedback-toolbar {
+  display: none;
+}
