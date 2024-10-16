@@ -32,8 +32,12 @@ function App() {
 
   return (
     <>
-      {/* <Login /> */}
-      <Certificate />
+      {document.referrer == "https://www.philsan.org/" ? 
+        <Certificate /> :
+        <Login />
+      }
+
+      {/* <Certificate /> */}
     </>
   )
 }
