@@ -27,6 +27,8 @@ function App() {
     }
   }
 
+  console.log("localStorgae", localStorage.getItem("userHasHistory"))
+
   return (
     <>
       {document.referrer == "https://www.philsan.org/" || localStorage.getItem("userHasHistory") !== "true" ? 
