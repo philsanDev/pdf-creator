@@ -26,6 +26,10 @@ function App() {
     }
   }
 
+    // sessionStorage.setItem("referrer", referrerToken)
+
+    console.log("document.referrer", document.referrer)
+
   return (
     <>
       {/* <Login /> */}

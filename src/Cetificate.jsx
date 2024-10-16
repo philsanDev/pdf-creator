@@ -1,5 +1,4 @@
 import { React, useState, useEffect } from 'react'
-import { useParams, useLocation } from 'react-router-dom'
 import html2pdf from 'html2pdf.js'
 import amiSign from "./assets/ami.png"
 import niqSign from "./assets/niq.png"
@@ -15,12 +14,6 @@ const Certificate = () => {
       
     const urlParams = new URLSearchParams(window.location.search);
     const referrerToken = urlParams.get('ref');
-
-    // sessionStorage.setItem("referrer", referrerToken)
-
-    console.log("document.referrer", document.referrer)
-
-    // console.log("referrer", referrerToken)
 
     const onChange = (data) => {
         const upperCaseName = data.target.value.toUpperCase()
@@ -65,7 +58,7 @@ const Certificate = () => {
       }
 
     return (
-        <>
+        <div className="window">
             <div className="main-container" id="capture" style={mainContainerstyle}>
                 <div className="container" style={containerStyle}>
                     <div className="logo-container">
@@ -247,7 +240,7 @@ const Certificate = () => {
             <div className="button-container">
                 <button onClick={() => onClick()}>Download PDF</button>
             </div>
-        </>
+        </div>
     )
 }
 
