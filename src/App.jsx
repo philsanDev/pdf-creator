@@ -33,16 +33,12 @@ function App() {
 
   return (
     <>
-      {/* {document.referrer == "https://www.philsan.org/" ? 
+      {document.referrer == "https://www.philsan.org/" ? 
         <Certificate 
           data={participants}
         /> :
         <Login />
-      } */}
-
-      <Certificate 
-         data={participants}
-      />
+      }
     </>
   )
 }
