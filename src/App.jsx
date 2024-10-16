@@ -10,7 +10,6 @@ function App() {
 
   useEffect(() => {
     getData()
-    console.log("localStorgae", localStorage.getItem("userHasHistory") == "true")
   }, [])
 
   const getData = async () => {

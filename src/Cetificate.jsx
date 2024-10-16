@@ -19,7 +19,7 @@ const Certificate = (props) => {
         setInputName(upperCaseName)
     }
 
-    const getData = async () => {
+    const postData = async () => {
         try {
           const res = await fetch (
             "https://api.sheetbest.com/sheets/7d1ef6fc-ae34-4337-a02f-b68bc6def638",
@@ -70,7 +70,7 @@ const Certificate = (props) => {
     }
 
     const onProceed = () => {
-        getData()
+        postData()
     }
     
       const mainContainerstyle = {
