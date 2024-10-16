@@ -27,17 +27,22 @@ function App() {
   }
 
     // sessionStorage.setItem("referrer", referrerToken)
+    // || localStorage.getItem('userHasHistory')
 
     console.log("document.referrer", document.referrer)
 
   return (
     <>
-      {document.referrer == "https://www.philsan.org/" ? 
-        <Certificate /> :
+      {/* {document.referrer == "https://www.philsan.org/" ? 
+        <Certificate 
+          data={participants}
+        /> :
         <Login />
-      }
+      } */}
 
-      {/* <Certificate /> */}
+      <Certificate 
+         data={participants}
+      />
     </>
   )
 }

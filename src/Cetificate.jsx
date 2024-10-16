@@ -3,32 +3,65 @@ import html2pdf from 'html2pdf.js'
 import amiSign from "./assets/ami.png"
 import niqSign from "./assets/niq.png"
 
-const Certificate = () => {
+const Certificate = (props) => {
     const [inputName, setInputName] = useState(null)
     const [name, setName] = useState(null)
     const [isInput, setIsinput] = useState(true)
     const [modalStatus, setModalStatus] = useState(false)
+    const [hasHistory, setHasHistory] = useState(false)
 
     useEffect(() => {
         setName(inputName)
       },[name])
-      
-    const urlParams = new URLSearchParams(window.location.search);
-    const referrerToken = urlParams.get('ref');
 
     const onChange = (data) => {
         const upperCaseName = data.target.value.toUpperCase()
         setInputName(upperCaseName)
-        console.log(data.target.value)
     }
 
+    const getData = async () => {
+        try {
+          const res = await fetch (
+            "https://api.sheetbest.com/sheets/7d1ef6fc-ae34-4337-a02f-b68bc6def638",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({"name": inputName})
+            }
+          )
+    
+          if(res) {
+            console.log("res", res)
+            html2pdf(document.querySelector("#capture"))
+            localStorage.setItem('userHasHistory', 'true')
+            window.location.href = 'https://www.philsan.org/';
+          }
+        } catch(error) {
+          console.log("error", error)
+        }
+      }
+
     const onClick = () => {
+        const user = props.data.find(user => user.name === inputName);
+
+        console.log("user", user)
+
         if(inputName) {
-            setIsinput(true)
-            setModalStatus(true)
+            if(user) {
+                setIsinput(true)
+                setModalStatus(true)
+                setHasHistory(true)
+            } else {
+                setIsinput(true)
+                setModalStatus(true)
+                setHasHistory(false)
+            }
         } else {
             setIsinput(false)
         }
+        
     }
 
 
@@ -37,8 +70,7 @@ const Certificate = () => {
     }
 
     const onProceed = () => {
-        html2pdf(document.querySelector("#capture"))
-        window.location.href = 'https://www.philsan.org/';
+        getData()
     }
     
       const mainContainerstyle = {
@@ -70,7 +102,7 @@ const Certificate = () => {
 
     return (
         <div className="window">
-           {modalStatus ? <div className="modal-confirmation">
+           {modalStatus && <div className="modal-confirmation">
                 <div className="modal-content-container">
                     <div className="modal-content">
                         <div>
@@ -79,16 +111,25 @@ const Certificate = () => {
                                     <path d="M7.78 5.66L11.31 9.19L9.19 11.31L5.66 7.78L2.12 11.32L0 9.2L3.54 5.66L0 2.12L2.12 0L5.66 3.54L9.2 0.00999975L11.32 2.13L7.78 5.66Z" fill="#28A813"/>
                                 </svg>
                             </div>
-                            <h4 style={{padding: "0px 40px"}}>Please confirm that the name you entered is correct.</h4>
-                            <h3 style={{margin: "0px 40px"}} class="final-name">{inputName}</h3>
-                            <h4></h4>
-                            <p style={{margin: "0px 40px"}}>You will only be able to <strong>download</strong> the certificate <strong>once</strong>.</p>
+                           {!hasHistory ?
+                            <div>
+                                <h4 style={{padding: "0px 40px"}}>Please confirm that the name you entered is correct.</h4>
+                                <h3 style={{margin: "0px 40px"}} class="final-name">{inputName}</h3>
+                                <h4></h4>
+                                <p style={{margin: "0px 40px"}}>You will only be able to <strong>download</strong> the certificate <strong>once</strong>.</p>
+                            </div> : 
+                            <div>
+                                <h4 style={{padding: "0px 40px"}}>Sorry you already downloaded your certificate before.</h4>
+                            </div>
+                           }
                         </div>
-                        <button onClick={onProceed}>Proceed</button>
+                        {!hasHistory &&
+                            <button onClick={onProceed}>Proceed</button> 
+                        }
                     </div>
                 </div>
                  <div className="modal-background"/>
-            </div> : ""}
+            </div>}
             <div className="main-container" id="capture" style={mainContainerstyle}>
                 <div className="container" style={containerStyle}>
                     <div className="logo-container">
