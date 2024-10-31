@@ -36,7 +36,7 @@ const Certificate = (props) => {
             console.log("res", res)
             html2pdf(document.querySelector("#capture"))
             localStorage.setItem('userHasHistory', 'true')
-            window.location.href = 'https://www.philsan.org/';
+            // window.location.href = 'https://www.philsan.org/';
           }
         } catch(error) {
           console.log("error", error)
@@ -57,6 +57,7 @@ const Certificate = (props) => {
                 setIsinput(true)
                 setModalStatus(true)
                 setHasHistory(false)
+                // setHasHistory(true)
             }
         } else {
             setIsinput(false)
@@ -124,7 +125,7 @@ const Certificate = (props) => {
                            }
                         </div>
                         {!hasHistory &&
-                            <button onClick={onProceed}>Proceed</button> 
+                            <button onClick={() => onProceed()}>Proceed</button> 
                         }
                     </div>
                 </div>
