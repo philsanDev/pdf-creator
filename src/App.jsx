@@ -26,21 +26,19 @@ function App() {
     }
   }
 
-  console.log("localStorage", localStorage.getItem("userHasHistory"))
-
   return (
     <>
-      {/* {document.referrer == "https://www.philsan.org/" ? (
+      {document.referrer == "https://www.philsan.org/" ? (
         localStorage.getItem("userHasHistory") ? 
           <Login /> :
           <Certificate 
             data={participants}
           /> 
         ) : <Login />
-      } */}
-       <Certificate 
+      }
+       {/* <Certificate 
           data={participants}
-        /> 
+        />  */}
     </>
   )
 }
