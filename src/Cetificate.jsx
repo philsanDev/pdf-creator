@@ -9,6 +9,7 @@ const Certificate = (props) => {
     const [isInput, setIsinput] = useState(true)
     const [modalStatus, setModalStatus] = useState(false)
     const [hasHistory, setHasHistory] = useState(false)
+    const [hasDownloaded, sethasDownloaded] = useState(false)
 
     useEffect(() => {
         setName(inputName)
@@ -36,7 +37,7 @@ const Certificate = (props) => {
             console.log("res", res)
             html2pdf(document.querySelector("#capture"))
             localStorage.setItem('userHasHistory', 'true')
-            // window.location.href = 'https://www.philsan.org/';
+            sethasDownloaded(true)
           }
         } catch(error) {
           console.log("error", error)
@@ -67,7 +68,12 @@ const Certificate = (props) => {
 
 
     const handleModal = () => {
-        setModalStatus(!modalStatus)
+        if(hasDownloaded) {
+            setModalStatus(!modalStatus)
+            window.location.href = 'https://www.philsan.org/';
+        } else {
+            setModalStatus(!modalStatus)
+        }
     }
 
     const onProceed = () => {
