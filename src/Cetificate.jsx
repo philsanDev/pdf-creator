@@ -21,20 +21,24 @@ const Certificate = (props) => {
     }
 
     const postData = async () => {
+        console.log("inputName", inputName)
+
         try {
           const res = await fetch (
-            "https://api.sheetbest.com/sheets/7d1ef6fc-ae34-4337-a02f-b68bc6def638",
+            "https://script.google.com/macros/s/AKfycbz8l1R3IV--rdBmvAyThKTRv2nJsJoGhy5SXuNM3qEl6H8wL4qQ0cDkAgiPEgd74s2rYA/exec",
             {
               method: "POST",
               headers: {
                 "Content-Type": "application/json"
               },
-              body: JSON.stringify({"name": inputName})
+              body: JSON.stringify({"participants": inputName}),
+              mode: "no-cors",
             }
           )
+
+          console.log("res", res)
     
           if(res) {
-            console.log("res", res)
             html2pdf(document.querySelector("#capture"))
             localStorage.setItem('userHasHistory', 'true')
             sethasDownloaded(true)
@@ -45,7 +49,10 @@ const Certificate = (props) => {
       }
 
     const onClick = () => {
-        const user = props.data.find(user => user.name === inputName);
+        console.log("props.data", props.data)
+        const user = props.data.find(user => user.participants === inputName);
+
+        // const user = false;
 
         console.log("user", user)
 

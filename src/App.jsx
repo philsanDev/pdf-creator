@@ -15,12 +15,13 @@ function App() {
   const getData = async () => {
     try {
       const res = await fetch (
-        "https://api.sheetbest.com/sheets/7d1ef6fc-ae34-4337-a02f-b68bc6def638"
+        "https://script.google.com/macros/s/AKfycbz8l1R3IV--rdBmvAyThKTRv2nJsJoGhy5SXuNM3qEl6H8wL4qQ0cDkAgiPEgd74s2rYA/exec"
       )
 
       const data = await res.json()
       setAllparticipants(data)
 
+      console.log("data", data)
     } catch(error) {
       console.log("error", error)
     }
