@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import Certificate from './Cetificate'
+import FreeAccessCert from './FreeAccessCert'
 import Login from './Login'
 
 function App() {
@@ -29,17 +30,20 @@ function App() {
 
   return (
     <>
-      {document.referrer == "https://www.philsan.org/" ? (
+      {/* {document.referrer == "https://www.philsan.org/" ? (
         localStorage.getItem("userHasHistory") ? 
           <Login /> :
           <Certificate 
             data={participants}
           /> 
         ) : <Login />
-      }
+      } */}
        {/* <Certificate 
           data={participants}
         />  */}
+         <FreeAccessCert
+          data={participants}
+        /> 
     </>
   )
 }

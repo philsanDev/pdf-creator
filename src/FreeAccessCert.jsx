@@ -1,15 +1,19 @@
 import { React, useState, useEffect } from 'react'
+import { useParams } from "react-router-dom"
 import html2pdf from 'html2pdf.js'
 import amiSign from "./assets/ami.png"
 import niqSign from "./assets/niq.png"
 
-const Certificate = (props) => {
+const FreeAccessCert = (props) => {
     const [inputName, setInputName] = useState(null)
     const [name, setName] = useState(null)
     const [isInput, setIsinput] = useState(true)
     const [modalStatus, setModalStatus] = useState(false)
     const [hasHistory, setHasHistory] = useState(false)
     const [hasDownloaded, sethasDownloaded] = useState(false)
+    const params = useParams(id)
+
+    console.log("params", params)
 
     useEffect(() => {
         setName(inputName)
@@ -21,7 +25,6 @@ const Certificate = (props) => {
     }
 
     const postData = async () => {
-        console.log("inputName", inputName)
 
         try {
           const res = await fetch (
@@ -328,4 +331,4 @@ const Certificate = (props) => {
     )
 }
 
-export default Certificate;
+export default FreeAccessCert;
