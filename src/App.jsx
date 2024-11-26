@@ -6,7 +6,7 @@ import Login from './Login'
 
 function App() {
   const [isInput, setIsinput] = useState(true)
-  const [participants, setAllparticipants] = useState({})
+  const [participants, setAllparticipants] = useState(null)
 
 
   useEffect(() => {
@@ -22,7 +22,6 @@ function App() {
       const data = await res.json()
       setAllparticipants(data)
 
-      console.log("data", data)
     } catch(error) {
       console.log("error", error)
     }
@@ -42,7 +41,7 @@ function App() {
           data={participants}
         />  */}
          <FreeAccessCert
-          data={participants}
+            data={participants}
         /> 
     </>
   )
