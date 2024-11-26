@@ -6,6 +6,7 @@ const RouterComponent = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<App />} />
         <Route path="/philrice-cert" element={<App />} />
       </Routes>
     </Router>
