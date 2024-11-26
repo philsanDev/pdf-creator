@@ -148,7 +148,7 @@ input:focus {
   width: 300px
 }
 
-input {
+input, .params-name {
   border: none;
   border-bottom: 2px solid;
   background-color: #ffffff;

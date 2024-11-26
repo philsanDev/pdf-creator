@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react'
-import { useParams } from "react-router-dom"
+import { useParams, useSearchParams  } from "react-router-dom"
 import html2pdf from 'html2pdf.js'
 import amiSign from "./assets/ami.png"
 import niqSign from "./assets/niq.png"
@@ -11,9 +11,12 @@ const FreeAccessCert = (props) => {
     const [modalStatus, setModalStatus] = useState(false)
     const [hasHistory, setHasHistory] = useState(false)
     const [hasDownloaded, sethasDownloaded] = useState(false)
-    const params = useParams(id)
+    const [searchParams] = useSearchParams();
+    const idParams = searchParams.get("id");
 
-    console.log("params", params)
+    console.log("idParams", idParams);
+
+    // console.log("idParams", idParams)
 
     useEffect(() => {
         setName(inputName)
@@ -54,8 +57,6 @@ const FreeAccessCert = (props) => {
         const user = props.data.find(user => user.participants === inputName);
 
         // const user = false;
-
-        console.log("user", user)
 
         if(inputName) {
             if(user) {
@@ -277,8 +278,8 @@ const FreeAccessCert = (props) => {
                             `}
                         </style> : ""
                         }
-                        <input placeholder="Enter your complete name here" value={inputName}  class="participant-name" type="text"  onChange={(e) => onChange(e)}/>
-                        <p>{}</p>
+                        {/* <input placeholder="Enter your complete name here" value={inputName}  class="participant-name" type="text"  onChange={(e) => onChange(e)}/> */}
+                        <p class="participant-name params-name">{idParams.toUpperCase()}</p>
                         <span>as</span>
                     </div>
                     <div className="convent-participant">
