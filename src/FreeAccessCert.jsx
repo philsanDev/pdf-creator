@@ -279,7 +279,7 @@ const FreeAccessCert = (props) => {
                         </style> : ""
                         }
                         {/* <input placeholder="Enter your complete name here" value={inputName}  class="participant-name" type="text"  onChange={(e) => onChange(e)}/> */}
-                        <p class="participant-name params-name">{idParams || idParams.toUpperCase()}</p>
+                        <p class="participant-name params-name">{idParams ? idParams.toUpperCase() : "" }</p>
                         <span>as</span>
                     </div>
                     <div className="convent-participant">
